@@ -1,10 +1,13 @@
 <template>
-  <footer class="py-2 px-4 | main-black text-gray-200">footer</footer>
+  <aside class="lg:w-80 h-full | main-black text-gray-200">
+    Aside
+  </aside>
 </template>
 
 <script setup lang="ts">
 
 </script>
+
 
 <style scoped>
 
