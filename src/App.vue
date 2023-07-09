@@ -2,10 +2,15 @@
   <div class="flex h-full">
     <div class="w-full h-full | flex flex-col justify-between">
       <Header/>
-      <div class="h-full | relative">
+      <div class="h-full overflow-hidden | relative">
         <router-view/>
         <Progress/>
       </div>
+      <button class="flex flex-col items-center justify-center | absolute bottom-28 right-24">
+        <span class="icon icon-up | text-3xl"></span>
+        <span class="icon icon-wheel | text-4xl"></span>
+        <span class="icon icon-down | text-3xl"></span>
+      </button>
       <Footer/>
     </div>
     <Aside v-if="false"/>

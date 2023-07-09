@@ -2,8 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "icon";
+
 * {
   font-family: 'Roboto Condensed', sans-serif;
+}
+
+html {
+  font-size: 62.5%;
 }
 
 .korean {
@@ -13,6 +19,7 @@
 
 html, body, #app {
   height: 100%;
+  overflow: hidden;
 }
 
 /* width */

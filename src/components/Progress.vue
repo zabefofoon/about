@@ -1,8 +1,7 @@
 <template>
-  <ul class="h-fit | absolute left-8 bottom-4 | text-gray-200 text-sm">
+  <ul class="h-fit | absolute left-16 top-12 | text-3xl">
     <li class="flex items-center gap-2">
-      <div class="bg-gray-500 w-0.5 h-0.5"
-      :class="['w-2']"></div>
+      <div class="bg-gray-400 w-0.5 h-0.5"></div>
       <span>Intro</span>
     </li>
     <li class="flex items-center gap-2 | opacity-30">
