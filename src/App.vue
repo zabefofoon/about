@@ -6,7 +6,7 @@
         <router-view/>
         <Progress/>
       </div>
-      <button class="flex flex-col items-center justify-center | absolute bottom-28 right-24">
+      <button class="flex flex-col items-center justify-center | absolute bottom-28 right-24 | text-white">
         <span class="icon icon-up | text-3xl"></span>
         <span class="icon icon-wheel | text-4xl"></span>
         <span class="icon icon-down | text-3xl"></span>

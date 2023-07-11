@@ -1,15 +1,15 @@
 <template>
-  <ul class="h-fit | absolute left-16 top-12 | text-3xl">
+  <ul class="flex flex-col gap-2 | h-fit | absolute left-16 top-12 | text-2xl text-white">
     <li class="flex items-center gap-2">
-      <div class="bg-gray-400 w-0.5 h-0.5"></div>
-      <span>Intro</span>
+      <div class="bg-gray-400 w-1 h-1"></div>
+      <span>Overview</span>
     </li>
     <li class="flex items-center gap-2 | opacity-30">
-      <div class="bg-gray-500 w-0.5 h-0.5"></div>
+      <div class="bg-gray-500 w-1 h-1"></div>
       <span>Career</span>
     </li>
     <li class="flex items-center gap-2 | opacity-30">
-      <div class="bg-gray-500 w-0.5 h-0.5"></div>
+      <div class="bg-gray-500 w-1 h-1"></div>
       <span>Contact</span>
     </li>
   </ul>
