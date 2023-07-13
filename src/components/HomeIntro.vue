@@ -5,8 +5,9 @@
 </template>
 
 <script setup lang="ts">
-import {onBeforeUnmount, onMounted, ref} from "vue"
+import {onBeforeUnmount, onMounted, ref, watch} from "vue"
 import * as THREE from "three"
+import gsap from 'gsap'
 
 const props = defineProps<{
   index: number
@@ -25,8 +26,6 @@ const camera = ref()
 const raycaster = ref()
 const pointer = ref()
 
-let composer
-
 const setSize = () => {
   width.value = renderArea.value?.offsetWidth || 0
   height.value = renderArea.value?.offsetHeight || 0
@@ -35,18 +34,17 @@ const setSize = () => {
 onMounted(() => {
   setSize()
   init()
-
 })
 
 const init = () => {
-  renderer.value = new THREE.WebGLRenderer({antialias: true})
+  renderer.value = new THREE.WebGLRenderer({antialias: true, alpha: true})
+  renderer.value.setClearColor(0x000000, 0)
   renderer.value.shadowMap.enabled = true;
   renderer.value.setPixelRatio(window.devicePixelRatio)
   renderer.value.setSize(width.value, height.value)
   renderArea.value?.appendChild(renderer.value.domElement)
 
   const scene = new THREE.Scene()
-  scene.background = new THREE.Color('rgb(88, 28, 135)')
 
   camera.value = new THREE.PerspectiveCamera(70, width.value / height.value)
   camera.value.position.z = 50
@@ -74,14 +72,12 @@ const init = () => {
   group.rotation.set(0, 0, -Math.PI * .25)
   scene.add(group)
 
-  const clock = new THREE.Clock()
-
   raycaster.value = new THREE.Raycaster()
   pointer.value = new THREE.Vector2()
 
   renderer.value.render(scene, camera.value)
 
-  animate(clock, scene, cube)
+  animate(scene, cube)
 
   const onWindowResize = () => {
     setSize()
@@ -102,6 +98,24 @@ const init = () => {
   window.addEventListener('resize', onWindowResize, {passive: true})
   renderArea.value?.addEventListener('pointermove', onPointerMove);
 
+  watch(() => props.index,
+      (value) => {
+        if (value === 0) {
+          gsap.to(cube.scale, {duration: .5, delay: 0, x: 1})
+          gsap.to(cube.scale, {duration: .5, delay: 0, y: 1})
+          gsap.to(cube.rotation, {duration: .5, delay: 0, x: Math.PI * .3})
+          gsap.to(group.rotation, {duration: .5, delay: 0, z: -Math.PI * .25})
+        } else if (value === 1) {
+          gsap.to(cube.scale, {duration: .5, delay: 0, x: 1})
+          gsap.to(cube.scale, {duration: .5, delay: 0, y: .01})
+          gsap.to(cube.rotation, {duration: .5, delay: 0, x: Math.PI * .5})
+          gsap.to(group.rotation, {duration: .5, delay: 0, z: 0})
+        } else if (value === 2) {
+          gsap.to(cube.scale, {duration: .5, delay: 0, x: 0})
+          gsap.to(cube.scale, {duration: .5, delay: 0, y: 0})
+        }
+      })
+
   onBeforeUnmount(() => {
     window.removeEventListener('resize', onWindowResize)
     cancelAnimationFrame(animationID)
@@ -109,15 +123,14 @@ const init = () => {
 }
 
 
-const animate = (clock,
-                 scene,
+const animate = (scene,
                  cube) => {
   cube.rotation.y += 0.001
 
   raycaster.value.setFromCamera(pointer.value, camera.value);
   renderer.value.render(scene, camera.value)
 
-  animationID = requestAnimationFrame(() => animate(clock, scene, cube))
+  animationID = requestAnimationFrame(() => animate(scene, cube))
 }
 </script>
 
