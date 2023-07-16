@@ -1,5 +1,6 @@
 <template>
-  <div class="flex flex-col | absolute top-1/2 right-16 -translate-y-1/2 | pb-40">
+  <div class="flex flex-col | absolute top-1/2 right-16 -translate-y-1/2 | pb-40"
+       :class="index === 1 ? 'pointer-events-auto' : 'pointer-events-none'">
     <h2 class="leading-none text-blue-800 text-outline-2 transition-all duration-500"
         :class="text1"
         style="font-size: 26rem;  ">Interest</h2>
@@ -7,9 +8,10 @@
        :class="text2"
        style="font-size: 6rem;">No Code World</p>
   </div>
-  <div class="absolute bottom-20 right-16">
+  <div class="absolute bottom-20 right-16"
+       :class="index === 1 ? 'pointer-events-auto' : 'pointer-events-none'">
     <div class="flex flex-col gap-8 | transition-all duration-500 delay-200"
-         :class="text2">
+         :class="text3">
       <p class="text-3xl leading-relaxed korean text-white text-right">
         웹 개발을 하면서, 코드가 필요하지 않은 세상을 만들고 싶습니다.<br/>
         제작자도 쉽게 웹을 만들 수 있고, 사용자도 좋은 경험을 누릴수 있게<br/>
@@ -32,7 +34,6 @@
         </a>
       </div>
     </div>
-
   </div>
 </template>
 

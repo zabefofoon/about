@@ -1,14 +1,14 @@
 <template>
-  <div class="flex items-center justify-center | w-1/2 h-full | pb-40">
+  <h3 class="absolute bottom-16 | leading-none text-orange-500 text-outline-2 transition-all duration-500"
+      :class="[text2, index === 2 ? 'pointer-events-auto' : 'pointer-events-none']"
+      style="font-size: 26rem;">Career</h3>
+  <div class="flex items-center justify-center | w-1/2 h-full">
     <ul class="flex flex-col gap-8 | leading-none text-white text-5xl transition-all duration-500"
         :class="text1">
       <li class="korean"><span class="text-2xl">14.03 ~ 20.02</span><br/>한경대 시각디자인과 졸업</li>
       <li class="korean"><span class="text-2xl">19.12~</span><br/>유젠 입사</li>
     </ul>
   </div>
-  <h3 class="absolute bottom-16 | leading-none text-orange-500 text-outline-2 transition-all duration-500"
-      :class="text2"
-      style="font-size: 26rem;">Career</h3>
   <Transition>
     <div v-if="index === 2"
          class="absolute right-0 | w-1/2 h-full | border-l border-l-orange-300">

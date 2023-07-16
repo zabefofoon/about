@@ -1,5 +1,6 @@
 <template>
-  <div class="flex flex-col | absolute top-1/2 left-16 -translate-y-1/2 | pb-40">
+  <div class="flex flex-col | absolute top-1/2 left-16 -translate-y-1/2 | pb-40"
+       :class="index === 0 ? 'pointer-events-auto' : 'pointer-events-none'">
     <h2 class="leading-none text-purple-900 text-outline-2 transition-all duration-500"
         :class="text1"
         style="font-size: 26rem;  ">Front End</h2>
@@ -7,7 +8,8 @@
        :class="text2"
        style="font-size: 6rem;">Vue, Typescript, TailwindCss</p>
   </div>
-  <div class="absolute bottom-20 left-16">
+  <div class="absolute bottom-20 left-16"
+       :class="index === 0 ? 'pointer-events-auto' : 'pointer-events-none'">
     <p class="text-3xl leading-relaxed korean text-white transition-all duration-500 delay-200"
        :class="text2">
       안녕하세요. 만드는 것을 좋아하는 웹 프론트엔드 개발자 정상우 입니다.<br/>

@@ -6,7 +6,7 @@
         <div v-for="(content, index) in contents"
              :key="index + content.title"
              class="embla__slide | flex flex-col items-center justify-center gap-16 | h-full min-w-0 | relative | ml-12 | shadow-md bg-white">
-          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 | w-full h-full | opacity-10"
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 | w-full h-full | opacity-10 pointer-events-none"
                style="max-width: 50%;max-height: 50%;">
             <img v-if="content.image"
                  class="w-full h-full object-contain"
