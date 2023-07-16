@@ -103,16 +103,19 @@ const init = () => {
         if (value === 0) {
           gsap.to(cube.scale, {duration: .5, delay: 0, x: 1})
           gsap.to(cube.scale, {duration: .5, delay: 0, y: 1})
+          gsap.to(cube.scale, {duration: .5, delay: 0, z: 1})
           gsap.to(cube.rotation, {duration: .5, delay: 0, x: Math.PI * .3})
           gsap.to(group.rotation, {duration: .5, delay: 0, z: -Math.PI * .25})
         } else if (value === 1) {
           gsap.to(cube.scale, {duration: .5, delay: 0, x: 1})
           gsap.to(cube.scale, {duration: .5, delay: 0, y: .01})
+          gsap.to(cube.scale, {duration: .5, delay: 0, z: 1})
           gsap.to(cube.rotation, {duration: .5, delay: 0, x: Math.PI * .5})
           gsap.to(group.rotation, {duration: .5, delay: 0, z: 0})
         } else if (value === 2) {
           gsap.to(cube.scale, {duration: .5, delay: 0, x: 0})
           gsap.to(cube.scale, {duration: .5, delay: 0, y: 0})
+          gsap.to(cube.scale, {duration: .5, delay: 0, z: 0})
         }
       })
 

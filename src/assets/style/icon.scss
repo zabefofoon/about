@@ -32,3 +32,9 @@
   -webkit-mask-image: url($src);
   mask-image: url($src);
 }
+
+.icon-left {
+  $src: 'https://api.iconify.design/mingcute/left-line.svg';
+  -webkit-mask-image: url($src);
+  mask-image: url($src);
+}

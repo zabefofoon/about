@@ -1,32 +1,45 @@
 <template>
-  <div class="flex flex-col | absolute top-1/2 left-16 -translate-y-1/2 | pb-40">
-    <h2 class="leading-none text-black text-outline-2 transition-all duration-500"
-        :class="text1"
-        style="font-size: 26rem;  ">Career</h2>
+  <div class="flex items-center justify-center | w-1/2 h-full | pb-40">
+    <ul class="flex flex-col gap-8 | leading-none text-white text-5xl transition-all duration-500"
+        :class="text1">
+      <li class="korean"><span class="text-2xl">14.03 ~ 20.02</span><br/>한경대 시각디자인과 졸업</li>
+      <li class="korean"><span class="text-2xl">19.12~</span><br/>유젠 입사</li>
+    </ul>
   </div>
+  <h3 class="absolute bottom-16 | leading-none text-orange-500 text-outline-2 transition-all duration-500"
+      :class="text2"
+      style="font-size: 26rem;">Career</h3>
   <Transition>
     <div v-if="index === 2"
-         class="absolute right-0 | w-1/2 h-full | bg-white">
-      <div class="w-full h-full | absolute top-0 left-0" style="background: linear-gradient(0deg, rgba(0,0,0,.2) 0%, rgba(255,255,255, 1) 33%,rgba(255,0,0,0) 100%);"></div>
+         class="absolute right-0 | w-1/2 h-full | border-l border-l-orange-300">
+      <div class="w-full h-full | absolute top-0 left-0 | flex items-center justify-center">
+        <div class="w-full h-2/3">
+          <ThirdInfoCarousel/>
+        </div>
+      </div>
     </div>
   </Transition>
 </template>
 
 <script setup lang="ts">
 import {ref, watch} from "vue"
+import ThirdInfoCarousel from "@/components/ThirdInfoCarousel.vue"
 
 const props = defineProps<{
   index: number
 }>()
 
 const text1 = ref()
+const text2 = ref()
 
 watch(() => props.index,
     (value) => {
       if (value === 2) {
         text1.value = 'opacity-100 translate-y-0'
+        text2.value = 'opacity-50 -translate-x-1/4 -translate-y-3/4 -rotate-90'
       } else {
         text1.value = 'opacity-0 translate-y-10'
+        text2.value = 'opacity-0 -translate-x-1/2 -translate-y-3/4 -rotate-90'
       }
     }, {immediate: true})
 </script>
@@ -40,6 +53,6 @@ watch(() => props.index,
 .v-enter-from,
 .v-leave-to {
   opacity: 0;
-  transform: translateY(-100%);
+  transform: translateX(100%);
 }
 </style>
