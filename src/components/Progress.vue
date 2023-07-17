@@ -1,5 +1,5 @@
 <template>
-  <ul class="flex flex-col gap-2 | h-fit | absolute left-16 top-12 | text-2xl text-white">
+  <ul class="hidden xl:flex flex-col gap-2 | h-fit | absolute left-16 top-12 | text-2xl text-white">
     <li v-for="(item, itemIndex) in items"
         :key="item"
         :class="itemIndex === index ? '' : 'opacity-50'"

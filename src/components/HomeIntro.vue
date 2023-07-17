@@ -1,6 +1,8 @@
 <template>
-  <div class="w-full h-full | flex items-center justify-center"
-       ref="renderArea">
+  <div class="flex items-center justify-center | absolute left-0 top-0 | w-full h-full | transition-all duration-500">
+    <div class="w-full h-full | flex items-center justify-center"
+         ref="renderArea">
+    </div>
   </div>
 </template>
 
@@ -31,6 +33,15 @@ const setSize = () => {
   height.value = renderArea.value?.offsetHeight || 0
 }
 
+const setCameraPosition = () => {
+  if (window.innerWidth > 1280)
+    camera.value.position.z = 50
+  else if (window.innerWidth > 768)
+    camera.value.position.z = 60
+  else if (window.innerWidth > 0)
+    camera.value.position.z = 100
+}
+
 onMounted(() => {
   setSize()
   init()
@@ -47,7 +58,7 @@ const init = () => {
   const scene = new THREE.Scene()
 
   camera.value = new THREE.PerspectiveCamera(70, width.value / height.value)
-  camera.value.position.z = 50
+  setCameraPosition()
   scene.add(camera.value)
 
   const light = new THREE.PointLight(0xffffff, 5, 200);
@@ -81,6 +92,8 @@ const init = () => {
 
   const onWindowResize = () => {
     setSize()
+
+    setCameraPosition()
 
     camera.value.aspect = width.value / height.value
     camera.value.updateProjectionMatrix()

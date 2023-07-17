@@ -9,7 +9,15 @@
 }
 
 html {
-  font-size: 62.5%;
+  font-size: .6vw;
+
+  @media (min-width: 768px) {
+    font-size: .66vw;
+  }
+
+  @media (min-width: 1280px) {
+    font-size: .55vw;
+  }
 }
 
 .korean {

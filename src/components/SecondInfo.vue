@@ -1,40 +1,40 @@
 <template>
-  <div class="flex flex-col | absolute top-1/2 right-16 -translate-y-1/2 | pb-40"
-       :class="index === 1 ? 'pointer-events-auto' : 'pointer-events-none'">
-    <h2 class="leading-none text-blue-800 text-outline-2 transition-all duration-500"
-        :class="text1"
-        style="font-size: 26rem;  ">Interest</h2>
-    <p class="leading-none text-blue-800 text-outline-1 text-right transition-all duration-500 delay-100"
-       :class="text2"
-       style="font-size: 6rem;">No Code World</p>
-  </div>
-  <div class="absolute bottom-20 right-16"
-       :class="index === 1 ? 'pointer-events-auto' : 'pointer-events-none'">
-    <div class="flex flex-col gap-8 | transition-all duration-500 delay-200"
-         :class="text3">
-      <p class="text-3xl leading-relaxed korean text-white text-right">
-        웹 개발을 하면서, 코드가 필요하지 않은 세상을 만들고 싶습니다.<br/>
-        제작자도 쉽게 웹을 만들 수 있고, 사용자도 좋은 경험을 누릴수 있게<br/>
-        고민을 하면서 진행중인 작업물 “MM”을 소개합니다.
-      </p>
-      <div class="flex gap-6">
-        <a href="https://musical-speculoos-19071a.netlify.app/"
-           target="_blank"
-           class="block w-full">
-          <button class="flex items-center justify-center gap-4 | w-full | border text-white py-4 rounded-full shadow-lg hover:shadow-sm hover:bg-white hover:text-blue-800 transition-all">
-            <span class="text-3xl">Show Video</span>
-          </button>
-        </a>
-        <a href="https://musical-speculoos-19071a.netlify.app/"
-           target="_blank"
-           class="block w-full">
-          <button class="flex items-center justify-center gap-4 | w-full | border text-white py-4 rounded-full shadow-lg hover:shadow-sm hover:bg-white hover:text-blue-800 transition-all">
-            <span class="text-3xl">Go To MM</span>
-          </button>
-        </a>
+  <section class="w-full h-full | flex flex-col justify-end | absolute top-0 left-0 | p-32 pb-80 md:pb-20 xl:p-0"
+           :class="index === 1 ? 'pointer-events-auto' : 'pointer-events-none'">
+    <div class="flex flex-col | xl:absolute xl:top-1/2 xl:right-16 xl:-translate-y-1/2 | md:pb-20 xl:pb-40">
+      <h2 class="main-title | leading-none text-blue-800 text-outline-2 dissolve-transition duration-500"
+          :class="dissolve">Interest</h2>
+      <p class="sub-title | pb-40 sm-20 xl:pb-0 | leading-none text-blue-800 text-outline-1 xl:text-right dissolve-transition delay-100"
+         :class="dissolve">No Code World</p>
+    </div>
+    <div class="xl:absolute xl:bottom-20 xl:right-16"
+         :class="index === 1 ? 'pointer-events-auto' : 'pointer-events-none'">
+      <div class="flex flex-col gap-20 md:gap-20 xl:gap-8 | dissolve-transition duration-500 delay-200"
+           :class="dissolve">
+        <p class="description | leading-relaxed korean text-white xl:text-right">
+          웹 개발을 하면서, 코드가 필요하지 않은 세상을 만들고 싶습니다.<br class="hidden sm:block"/>
+          제작자도 쉽게 웹을 만들 수 있고, 사용자도 좋은 경험을 누릴수 있게<br class="hidden sm:block"/>
+          고민을 하면서 진행중인 작업물 “MM”을 소개합니다.
+        </p>
+        <div class="flex flex-col md:flex-row gap-6">
+          <a href="https://musical-speculoos-19071a.netlify.app/"
+             target="_blank"
+             class="block w-full">
+            <button class="flex items-center justify-center gap-4 | w-full | border text-white py-12 xl:py-4 rounded-full shadow-lg hover:shadow-sm hover:bg-white hover:text-blue-800 transition-all">
+              <span class="button | text-3xl">Show Video</span>
+            </button>
+          </a>
+          <a href="https://musical-speculoos-19071a.netlify.app/"
+             target="_blank"
+             class="block w-full">
+            <button class="flex items-center justify-center gap-4 | w-full | border text-white py-12 xl:py-4 rounded-full shadow-lg hover:shadow-sm hover:bg-white hover:text-blue-800 transition-all">
+              <span class="button | text-3xl">Go To MM</span>
+            </button>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">
@@ -44,24 +44,53 @@ const props = defineProps<{
   index: number
 }>()
 
-const text1 = ref()
-const text2 = ref()
-const text3 = ref()
+const dissolve = ref()
 
 watch(() => props.index,
     (value) => {
-      if (value === 1) {
-        text1.value = 'opacity-100 translate-y-0'
-        text2.value = 'opacity-100 translate-y-0'
-        text3.value = 'opacity-100 translate-y-0'
-      } else {
-        text1.value = 'opacity-0 translate-y-10'
-        text2.value = 'opacity-0 translate-y-10'
-        text3.value = 'opacity-0 translate-y-10'
-      }
+      dissolve.value = value === 1
+          ? 'opacity-100 translate-y-0'
+          : 'opacity-0 translate-y-10'
+
     }, {immediate: true})
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.dissolve-transition {
+  transition-property: opacity, transform;
+  transition-duration: 500ms;
+  transition-timing-function: ease;
+}
 
+.main-title {
+  font-size: 30rem;
+
+  @media (min-width: 1280px) {
+    font-size: 26rem;
+  }
+}
+
+.sub-title {
+  font-size: 12rem;
+
+  @media (min-width: 1280px) {
+    font-size: 6rem;
+  }
+}
+
+.description {
+  font-size: max(14px, 3rem);
+
+  @media (min-width: 1280px) {
+    font-size: 1.8rem;
+  }
+}
+
+.button {
+  font-size: max(14px, 3rem);
+
+  @media (min-width: 1280px) {
+    font-size: 1.8rem;
+  }
+}
 </style>

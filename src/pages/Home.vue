@@ -1,22 +1,18 @@
 <template>
   <main class="h-full | relative"
-        ref="el">
-    <section class="w-full h-full | flex | relative | transition-all"
-             :class="background">
-      <div class="flex items-center justify-center | absolute | w-full h-full | transition-all duration-500"
-           :class="canvasXPos">
-        <HomeIntro :index="index"/>
-      </div>
-      <FirstInfo :index="index"/>
-      <SecondInfo :index="index"/>
-      <ThirdInfo :index="index"/>
-      <FourthInfo :index="index"/>
-    </section>
+        ref="el"
+        :class="background">
+    <HomeIntro :index="index"
+               :class="canvasXPos"/>
+    <FirstInfo :index="index"/>
+    <SecondInfo :index="index"/>
+    <ThirdInfo :index="index"/>
+    <FourthInfo :index="index"/>
     <div class="absolute top-0 left-0 z-index-1 | w-full h-full | pointer-events-none"
          style="background: linear-gradient(140deg, rgba(0,0,255,.2) 0%, rgba(255,0,0,.1) 100%)"></div>
     <Progress :index="index"
               @update:index="setIndex"/>
-    <button class="flex flex-col items-center justify-center | absolute bottom-16 left-1/2 -translate-x-1/2 | text-white">
+    <button class="flex flex-col items-center justify-center | absolute xl:bottom-16 xl:left-1/2 xl:-translate-x-1/2 | text-white">
       <span class="icon icon-up | text-3xl"
             @click="decreaseIndex"></span>
       <span class="icon icon-wheel | text-4xl"
@@ -43,6 +39,11 @@ defineProps<{
 
 const el = ref<HTMLDivElement>()
 const index = ref(0)
+const screenSize = ref(window.innerWidth)
+const setScreenSize = () => {
+  screenSize.value = window.innerWidth
+}
+
 const setIndex = (value: number) => index.value = value
 const MAX_INDEX = 4
 const increaseIndex = debounce(() => {
@@ -70,24 +71,24 @@ onBeforeUnmount(() => {
   window.removeEventListener('wheel', wheelHandler)
 })
 
-const canvasXPos = ref('left-1/4')
+const canvasXPos = ref('xl:left-1/4')
 const background = ref('bg-purple-900')
 watch(index,
     (value) => {
       if (value === 0) {
-        canvasXPos.value = 'left-1/4'
+        canvasXPos.value = 'xl:left-1/4'
         background.value = 'bg-purple-900'
       } else if (value === 1) {
-        canvasXPos.value = '-left-1/4'
+        canvasXPos.value = 'xl:-left-1/4'
         background.value = 'bg-blue-800'
       } else if (value === 2) {
-        canvasXPos.value = 'left-1/2 -translate-x-1/2'
+        canvasXPos.value = 'xl:left-1/2 xl:-translate-x-1/2'
         background.value = 'bg-orange-500'
       } else if (value === 3) {
-        canvasXPos.value = 'left-1/2 -translate-x-1/2'
+        canvasXPos.value = 'xl:left-1/2 xl:-translate-x-1/2'
         background.value = 'bg-red-500'
       } else {
-        canvasXPos.value = 'left-1/2 -translate-x-1/2'
+        canvasXPos.value = 'xl:left-1/2 xl:-translate-x-1/2'
         background.value = 'bg-black'
       }
     }, {immediate: true})

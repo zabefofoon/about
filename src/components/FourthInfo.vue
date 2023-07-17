@@ -1,28 +1,30 @@
 <template>
-  <div class="flex flex-col | absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 | pb-40"
-       :class="index === 3 ? 'pointer-events-auto' : 'pointer-events-none'">
-    <h2 class="leading-none text-red-500 text-outline-2 transition-all duration-500"
-        :class="text1"
-        style="font-size: 26rem;  ">Contact</h2>
-    <p class="leading-none text-red-500 text-outline-1 text-center transition-all duration-500 delay-100"
-       :class="text2"
-       style="font-size: 6rem;">Let`s make it together</p>
-    <div class="w-fit | mt-20 mx-auto | text-3xl leading-relaxed korean text-white text-center transition-all duration-500 delay-200"
-         :class="text3">
-      <div class="flex gap-4">
-        <p>Kakao: </p>
-        <p>zabefofoon</p>
-      </div>
-      <div class="flex gap-4">
-        <p>Gmail: </p>
-        <p>zabefofoon@gmail.com</p>
-      </div>
-      <div class="flex gap-4">
-        <p>Insta: </p>
-        <p>sangwwoo</p>
+  <section class="w-full h-full | flex flex-col justify-end | absolute top-0 left-0 | transition-all"
+           :class="index === 3 ? 'pointer-events-auto' : 'pointer-events-none'">
+    <div class="flex flex-col | absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 | pb-40">
+      <h2 class="leading-none text-red-500 text-outline-2 transition-all duration-500"
+          :class="text1"
+          style="font-size: 26rem;  ">Contact</h2>
+      <p class="leading-none text-red-500 text-outline-1 text-center transition-all duration-500 delay-100"
+         :class="text2"
+         style="font-size: 6rem;">Let`s make it together</p>
+      <div class="w-fit | mt-20 mx-auto | text-3xl leading-relaxed korean text-white text-center transition-all duration-500 delay-200"
+           :class="text3">
+        <div class="flex gap-4">
+          <p>Kakao: </p>
+          <p>zabefofoon</p>
+        </div>
+        <div class="flex gap-4">
+          <p>Gmail: </p>
+          <p>zabefofoon@gmail.com</p>
+        </div>
+        <div class="flex gap-4">
+          <p>Insta: </p>
+          <p>sangwwoo</p>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">
