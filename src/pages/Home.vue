@@ -1,7 +1,10 @@
 <template>
   <main class="h-full | relative"
         ref="el"
-        :class="background">
+        :class="background"
+        @wheel="wheelHandler"
+        @touchstart="pointerenterHandler"
+        @touchend="pointerleaveHandler">
     <HomeIntro :index="index"
                :class="canvasXPos"/>
     <FirstInfo :index="index"/>
@@ -12,7 +15,7 @@
          style="background: linear-gradient(140deg, rgba(0,0,255,.2) 0%, rgba(255,0,0,.1) 100%)"></div>
     <Progress :index="index"
               @update:index="setIndex"/>
-    <button class="flex flex-col items-center justify-center | absolute xl:bottom-16 xl:left-1/2 xl:-translate-x-1/2 | text-white">
+    <button class="hidden xl:block flex flex-col items-center justify-center | absolute xl:bottom-16 xl:left-1/2 xl:-translate-x-1/2 | text-white">
       <span class="icon icon-up | text-3xl"
             @click="decreaseIndex"></span>
       <span class="icon icon-wheel | text-4xl"
@@ -23,7 +26,7 @@
   </main>
 </template>
 <script setup lang="ts">
-import {onBeforeUnmount, onMounted, ref, watch} from "vue"
+import {ref, watch} from "vue"
 import HomeIntro from "@/components/HomeIntro.vue"
 import FirstInfo from "@/components/FirstInfo.vue"
 import SecondInfo from "@/components/SecondInfo.vue"
@@ -63,13 +66,18 @@ const wheelHandler = (event: WheelEvent) => {
       : decreaseIndex()
 }
 
-onMounted(() => {
-  window.addEventListener('wheel', wheelHandler)
-})
 
-onBeforeUnmount(() => {
-  window.removeEventListener('wheel', wheelHandler)
-})
+let clientY = 0
+
+const pointerenterHandler = (event: TouchEvent) => {
+  clientY = event.changedTouches[0].clientY
+}
+const pointerleaveHandler = (event: TouchEvent) => {
+  if (Math.abs(clientY - event.changedTouches[0].clientY) > 10)
+    clientY > event.changedTouches[0].clientY
+        ? increaseIndex()
+        : decreaseIndex()
+}
 
 const canvasXPos = ref('xl:left-1/4')
 const background = ref('bg-purple-900')

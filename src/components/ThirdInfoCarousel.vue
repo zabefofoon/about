@@ -1,5 +1,7 @@
 <template>
-  <div class="embla | h-full | relative">
+  <div class="embla | h-full | relative"
+  @touchstart.stop
+  @touchend.stop>
     <div class="embla__viewport | h-full | p-20 | overflow-hidden"
          ref="emblaNode">
       <div class="embla__container | h-full | flex">

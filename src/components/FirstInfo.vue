@@ -60,7 +60,7 @@ watch(() => props.index,
 }
 
 .description {
-  font-size: max(14px, 3rem);
+  font-size: max(15px, 3rem);
 
   @media (min-width: 1280px) {
     font-size: 1.8rem;

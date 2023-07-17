@@ -20,14 +20,14 @@
           <a href="https://musical-speculoos-19071a.netlify.app/"
              target="_blank"
              class="block w-full">
-            <button class="flex items-center justify-center gap-4 | w-full | border text-white py-12 xl:py-4 rounded-full shadow-lg hover:shadow-sm hover:bg-white hover:text-blue-800 transition-all">
+            <button class="flex items-center justify-center gap-4 | w-full | border text-white py-20 xl:py-4 rounded-full shadow-lg hover:shadow-sm hover:bg-white hover:text-blue-800 transition-all">
               <span class="button | text-3xl">Show Video</span>
             </button>
           </a>
           <a href="https://musical-speculoos-19071a.netlify.app/"
              target="_blank"
              class="block w-full">
-            <button class="flex items-center justify-center gap-4 | w-full | border text-white py-12 xl:py-4 rounded-full shadow-lg hover:shadow-sm hover:bg-white hover:text-blue-800 transition-all">
+            <button class="flex items-center justify-center gap-4 | w-full | border text-white py-20 xl:py-4 rounded-full shadow-lg hover:shadow-sm hover:bg-white hover:text-blue-800 transition-all">
               <span class="button | text-3xl">Go To MM</span>
             </button>
           </a>
@@ -79,7 +79,7 @@ watch(() => props.index,
 }
 
 .description {
-  font-size: max(14px, 3rem);
+  font-size: max(15px, 3rem);
 
   @media (min-width: 1280px) {
     font-size: 1.8rem;
@@ -87,7 +87,7 @@ watch(() => props.index,
 }
 
 .button {
-  font-size: max(14px, 3rem);
+  font-size: max(15px, 3rem);
 
   @media (min-width: 1280px) {
     font-size: 1.8rem;
