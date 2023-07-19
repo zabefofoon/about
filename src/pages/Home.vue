@@ -68,7 +68,7 @@ const pointerenterHandler = (event: TouchEvent) => {
   clientY = event.changedTouches[0].clientY
 }
 const pointerleaveHandler = (event: TouchEvent) => {
-  if (Math.abs(clientY - event.changedTouches[0].clientY) > 10)
+  if (Math.abs(clientY - event.changedTouches[0].clientY) > 72)
     clientY > event.changedTouches[0].clientY
         ? increaseIndex()
         : decreaseIndex()

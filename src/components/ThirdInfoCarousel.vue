@@ -1,46 +1,36 @@
 <template>
-  <div class="embla | h-full | relative"
-  @touchstart.stop
-  @touchend.stop>
-    <div class="embla__viewport | h-full | p-20 | overflow-hidden"
+  <div class="embla | relative">
+    <div class="embla__viewport | overflow-hidden | py-20 pl-12 md:pl-80"
          ref="emblaNode">
-      <div class="embla__container | h-full | flex">
+      <div class="embla__container | flex | -ml-20 md:-ml-8">
         <div v-for="(content, index) in contents"
              :key="index + content.title"
-             class="embla__slide | flex flex-col items-center justify-center gap-16 | h-full min-w-0 | relative | ml-12 | shadow-md bg-white">
-          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 | w-full h-full | opacity-10 pointer-events-none"
-               style="max-width: 50%;max-height: 50%;">
-            <img v-if="content.image"
-                 class="w-full h-full object-contain"
-                 :src="content.image"
-                 :alt="content.title"/>
+             class="embla__slide | h-full min-w-0 | pl-20 md:pl-8">
+          <div class="flex flex-col items-center justify-center gap-16 | w-full aspect-square | relative | shadow-md shadow-orange-800 bg-white">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 | w-full h-full | opacity-10 pointer-events-none"
+                 style="max-width: 50%;max-height: 50%;">
+              <img v-if="content.image"
+                   class="w-full h-full object-contain"
+                   :src="content.image"
+                   :alt="content.title"/>
+            </div>
+            <div class="flex flex-col items-start"
+                 :style="{width: content.description ? '80%' : 'auto'}">
+              <h2 class="korean | text-2xl">{{ content.date }}</h2>
+              <h2 class="korean | text-4xl" v-html="content.title"></h2>
+            </div>
+            <p v-if="content.description"
+               class="korean text-2xl leading-normal"
+               style="width: 80%"
+               v-html="content.description"></p>
+            <p v-if="content.caption"
+               class="korean text-xl leading-normal"
+               style="width: 80%"
+               v-html="content.caption"></p>
           </div>
-          <div class="flex flex-col items-start"
-               :style="{width: content.description ? '80%' : 'auto'}">
-            <h2 class="korean | text-2xl">{{ content.date }}</h2>
-            <h2 class="korean | text-5xl" v-html="content.title"></h2>
-          </div>
-          <p v-if="content.description"
-             class="korean text-3xl leading-normal"
-             style="width: 80%"
-             v-html="content.description"></p>
-          <p v-if="content.caption"
-             class="korean text-2xl leading-normal"
-             style="width: 80%"
-             v-html="content.caption"></p>
         </div>
       </div>
     </div>
-    <button v-if="canScrollPrev"
-            class="embla__prev | absolute top-1/2 left-4 -translate-y-1/2 | flex items-center"
-            @click="prev">
-      <i class="icon icon-left | text-6xl"></i>
-    </button>
-    <button v-if="canScrollNext"
-            class="embla__next | absolute top-1/2 right-4 -translate-y-1/2 | flex items-center"
-            @click="next">
-      <i class="icon icon-right | text-6xl"></i>
-    </button>
   </div>
 </template>
 
@@ -51,21 +41,9 @@ import {SlideContent} from "@/models/SlideContent"
 import hknu from "@/assets/image/hknu.svg"
 import uzen from "@/assets/image/uzen.png"
 
-const [emblaNode, emblaApi] = emblaCarouselVue({})
-
-const prev = () => emblaApi.value?.scrollPrev()
-const next = () => emblaApi.value?.scrollNext()
-
-//const canScrollNext = computed(() => emblaApi.value?.canScrollNext())
-
-const canScrollPrev = ref(false)
-const canScrollNext = ref(true)
-
-onMounted(() => {
-  emblaApi.value?.on('select', () => {
-    canScrollPrev.value = emblaApi.value?.canScrollPrev() || false
-    canScrollNext.value = emblaApi.value?.canScrollNext() || false
-  })
+const [emblaNode] = emblaCarouselVue({
+  align: 'center',
+  dragFree: true
 })
 
 const contents = ref<SlideContent[]>([
@@ -135,7 +113,10 @@ target="_blank">바이린</a>
 <style scoped lang="scss">
 .embla {
   .embla__slide {
-    flex: 0 0 80%;
+    flex: 0 0 90%;
+
+    @media (min-width: 768px) {
+      flex: 0 0 33.33%;    }
   }
 }
 

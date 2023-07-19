@@ -4,20 +4,11 @@
     <h3 class="absolute bottom-16 | leading-none text-orange-500 text-outline-2 transition-all duration-500"
         :class="text2"
         style="font-size: 26rem;">Career</h3>
-    <div class="flex items-center justify-center | w-1/2 h-full">
-      <ul class="flex flex-col gap-8 | leading-none text-white text-5xl transition-all duration-500"
-          :class="text1">
-        <li class="korean"><span class="text-2xl">14.03 ~ 20.02</span><br/>한경대 시각디자인과 졸업</li>
-        <li class="korean"><span class="text-2xl">19.12~</span><br/>유젠 입사</li>
-      </ul>
-    </div>
     <Transition>
       <div v-if="index === 2"
-           class="absolute right-0 | w-1/2 h-full | border-l border-l-orange-300">
-        <div class="w-full h-full | absolute top-0 left-0 | flex items-center justify-center">
-          <div class="w-full h-2/3">
-            <ThirdInfoCarousel/>
-          </div>
+           class="absolute left-0 | w-full h-full">
+        <div class="w-full | absolute top-1/2 left-0 -translate-y-1/2 | flex items-center justify-center">
+          <ThirdInfoCarousel/>
         </div>
       </div>
     </Transition>
@@ -39,10 +30,10 @@ watch(() => props.index,
     (value) => {
       if (value === 2) {
         text1.value = 'opacity-100 translate-y-0'
-        text2.value = 'opacity-50 -translate-x-1/4 -translate-y-3/4 -rotate-90'
+        text2.value = 'opacity-50 translate-y-0'
       } else {
         text1.value = 'opacity-0 translate-y-10'
-        text2.value = 'opacity-0 -translate-x-1/2 -translate-y-3/4 -rotate-90'
+        text2.value = 'opacity-0 translate-y-10'
       }
     }, {immediate: true})
 </script>
