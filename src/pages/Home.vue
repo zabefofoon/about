@@ -1,5 +1,5 @@
 <template>
-  <main class="h-full | relative"
+  <main class="h-full | relative | overscroll-none"
         ref="el"
         :class="background"
         @wheel="wheelHandler"
@@ -15,7 +15,7 @@
          style="background: linear-gradient(140deg, rgba(0,0,255,.2) 0%, rgba(255,0,0,.1) 100%)"></div>
     <Progress :index="index"
               @update:index="setIndex"/>
-    <button class="hidden xl:block flex flex-col items-center justify-center | absolute xl:bottom-16 xl:left-1/2 xl:-translate-x-1/2 | text-white">
+    <button class="hidden xl:flex flex-col items-center justify-center | absolute xl:bottom-16 xl:left-1/2 xl:-translate-x-1/2 | text-white">
       <span class="icon icon-up | text-3xl"
             @click="decreaseIndex"></span>
       <span class="icon icon-wheel | text-4xl"
@@ -42,11 +42,6 @@ defineProps<{
 
 const el = ref<HTMLDivElement>()
 const index = ref(0)
-const screenSize = ref(window.innerWidth)
-const setScreenSize = () => {
-  screenSize.value = window.innerWidth
-}
-
 const setIndex = (value: number) => index.value = value
 const MAX_INDEX = 4
 const increaseIndex = debounce(() => {

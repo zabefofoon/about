@@ -1,5 +1,6 @@
 <template>
-  <div class="flex h-full">
+  <div class="flex h-full mx-auto"
+  style="max-width: 1920px;">
     <div class="w-full h-full | flex flex-col justify-between">
       <Header/>
       <div class="h-full overflow-hidden | relative">
