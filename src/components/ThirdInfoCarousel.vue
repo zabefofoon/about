@@ -1,12 +1,12 @@
 <template>
-  <div class="embla | relative">
+  <div class="embla | w-full | relative">
     <div class="embla__viewport | overflow-hidden | py-20 pl-12 md:pl-80"
          ref="emblaNode">
       <div class="embla__container | flex | -ml-20 md:-ml-8">
         <div v-for="(content, index) in contents"
              :key="index + content.title"
              class="embla__slide | h-full min-w-0 | pl-20 md:pl-8">
-          <div class="flex flex-col items-center justify-center gap-16 | w-full aspect-square | relative | shadow-md shadow-orange-800 bg-white">
+          <div class="flex flex-col items-center justify-center gap-8 | w-full aspect-square | relative | p-32 | shadow-md shadow-orange-800 bg-white">
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 | w-full h-full | opacity-10 pointer-events-none"
                  style="max-width: 50%;max-height: 50%;">
               <img v-if="content.image"
@@ -15,17 +15,15 @@
                    :alt="content.title"/>
             </div>
             <div class="flex flex-col items-start"
-                 :style="{width: content.description ? '80%' : 'auto'}">
-              <h2 class="korean | text-2xl">{{ content.date }}</h2>
-              <h2 class="korean | text-4xl" v-html="content.title"></h2>
+                 :style="{width: content.description ? '100%' : 'auto'}">
+              <h2 class="korean date">{{ content.date }}</h2>
+              <h2 class="korean-bold title font-bold" v-html="content.title"></h2>
             </div>
             <p v-if="content.description"
-               class="korean text-2xl leading-normal"
-               style="width: 80%"
+               class="korean description | leading-normal"
                v-html="content.description"></p>
             <p v-if="content.caption"
-               class="korean text-xl leading-normal"
-               style="width: 80%"
+               class="korean caption | w-full | leading-normal"
                v-html="content.caption"></p>
           </div>
         </div>
@@ -36,7 +34,7 @@
 
 <script setup lang="ts">
 import emblaCarouselVue from 'embla-carousel-vue'
-import {onMounted, ref} from "vue"
+import {ref} from "vue"
 import {SlideContent} from "@/models/SlideContent"
 import hknu from "@/assets/image/hknu.svg"
 import uzen from "@/assets/image/uzen.png"
@@ -59,7 +57,7 @@ const contents = ref<SlideContent[]>([
     date: '19.12 ~',
     title: 'eCommerce 전문 기업 Uzen 입사',
     description: `
-    ‘G1 Commerce Cloud’ 라는 솔루션 사업을 담당하는 PS사업부에서 프론트엔드 개발팀에 속하고 있습니다.<br/><br/>
+    ‘G1 Commerce Cloud’ 라는 솔루션 사업을 담당하는 PS사업부에서 프론트엔드 개발팀에 속하고 있습니다.<div class="h-12"></div>
     플랫폼 Api 와의 연계 및 프론트 화면 구축, 필요한 Ui 라이브러리 제작, 간단한 CMS인 ‘페이지빌더’ 제작 등에 기여하고 있습니다.
     `,
     caption: `
@@ -116,7 +114,40 @@ target="_blank">바이린</a>
     flex: 0 0 90%;
 
     @media (min-width: 768px) {
-      flex: 0 0 33.33%;    }
+      flex: 0 0 33.33%;
+    }
+
+    .date {
+      font-size: max(12px, 3rem);
+
+      @media (min-width: 768px) {
+        font-size: max(12px, 1.6rem);
+      }
+    }
+
+    .title {
+      font-size: max(15px, 4rem);
+
+      @media (min-width: 768px) {
+        font-size: max(15px, 1.6rem);
+      }
+    }
+
+    .description {
+      font-size: max(15px, 4rem);
+
+      @media (min-width: 768px) {
+        font-size: max(15px, 1.6rem);
+      }
+    }
+
+    .caption {
+      font-size: max(12px, 3rem);
+
+      @media (min-width: 768px) {
+        font-size: max(12px, 1.6rem);
+      }
+    }
   }
 }
 
