@@ -1,11 +1,11 @@
 <template>
-  <ul class="hidden xl:flex flex-col gap-2 | h-fit | absolute left-16 top-12 | text-2xl text-white">
+  <ul class="progress | hidden xl:flex flex-col | h-fit | absolute | text-white">
     <li v-for="(item, itemIndex) in items"
         :key="item"
         :class="itemIndex === index ? '' : 'opacity-50'"
         @click="emit('update:index', itemIndex)">
-      <button class="flex items-center gap-2">
-        <span class="bg-gray-400 w-1 h-1"></span>
+      <button class="flex items-center">
+        <span class="indicator bg-gray-400"></span>
         <span>{{ item }}</span>
       </button>
     </li>
@@ -32,10 +32,19 @@ const items = ref([
 </script>
 
 <style scoped lang="scss">
-/*li {
-  &:before {
-    content: '·';
-    margin-right: .5rem;
+.progress {
+  font-size: 14px;
+
+  top: 20px;
+  left: 20px;
+
+  button {
+    gap: 6px;
+
+    .indicator {
+      width: 3px;
+      height: 1px;
+    }
   }
-}*/
+}
 </style>

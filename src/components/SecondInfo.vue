@@ -1,5 +1,5 @@
 <template>
-  <section class="w-full h-full | flex flex-col justify-end | absolute top-0 left-0 | p-32 pb-80 md:pb-20 xl:p-0"
+  <section class="w-full h-full | flex flex-col justify-end | absolute top-0 left-0"
            :class="index === 1 ? 'pointer-events-auto' : 'pointer-events-none'">
     <div class="flex flex-col | xl:absolute xl:top-1/2 xl:right-16 xl:-translate-y-1/2 | md:pb-20 xl:pb-40">
       <h2 class="main-title | leading-none text-blue-800 text-outline-2 dissolve-transition duration-500"
@@ -20,14 +20,14 @@
           <a href="https://musical-speculoos-19071a.netlify.app/"
              target="_blank"
              class="block w-full">
-            <button class="flex items-center justify-center gap-4 | w-full | border text-white py-20 xl:py-4 rounded-full shadow-lg hover:shadow-sm hover:bg-white hover:text-blue-800 transition-all">
+            <button class="flex items-center justify-center gap-4 | w-full | border text-white rounded-full shadow-lg hover:shadow-sm hover:bg-white hover:text-blue-800 transition-all">
               <span class="button | text-3xl">Show Video</span>
             </button>
           </a>
           <a href="https://musical-speculoos-19071a.netlify.app/"
              target="_blank"
              class="block w-full">
-            <button class="flex items-center justify-center gap-4 | w-full | border text-white py-20 xl:py-4 rounded-full shadow-lg hover:shadow-sm hover:bg-white hover:text-blue-800 transition-all">
+            <button class="flex items-center justify-center gap-4 | w-full | border text-white rounded-full shadow-lg hover:shadow-sm hover:bg-white hover:text-blue-800 transition-all">
               <span class="button | text-3xl">Go To MM</span>
             </button>
           </a>
@@ -56,41 +56,53 @@ watch(() => props.index,
 </script>
 
 <style scoped lang="scss">
-.dissolve-transition {
-  transition-property: opacity, transform;
-  transition-duration: 500ms;
-  transition-timing-function: ease;
-}
-
-.main-title {
-  font-size: 30rem;
+section {
+  padding: 20px;
 
   @media (min-width: 1280px) {
-    font-size: 26rem;
+    padding: 0;
+  }
+
+  .dissolve-transition {
+    transition-property: opacity, transform;
+    transition-duration: 500ms;
+    transition-timing-function: ease;
+  }
+
+  .main-title {
+    font-size: min(30rem, 166px);
+
+    @media (min-width: 1280px) {
+      font-size: 26rem;
+    }
+  }
+
+  .sub-title {
+    font-size: clamp(24px, 12rem, 80px);
+
+    @media (min-width: 1280px) {
+      font-size: 6rem;
+    }
+  }
+
+  .description {
+    font-size: clamp(15px, 3rem, 18px);
+
+    @media (min-width: 1280px) {
+      font-size: 1.8rem;
+    }
+  }
+
+  .button {
+    font-size: clamp(15px, 3rem, 18px);
+    padding: 12px;
+
+
+    @media (min-width: 1280px) {
+      font-size: clamp(15px, 1.8rem, 18px);
+      padding: 8px;
+    }
   }
 }
 
-.sub-title {
-  font-size: 12rem;
-
-  @media (min-width: 1280px) {
-    font-size: 6rem;
-  }
-}
-
-.description {
-  font-size: max(15px, 3rem);
-
-  @media (min-width: 1280px) {
-    font-size: 1.8rem;
-  }
-}
-
-.button {
-  font-size: max(15px, 3rem);
-
-  @media (min-width: 1280px) {
-    font-size: 1.8rem;
-  }
-}
 </style>
