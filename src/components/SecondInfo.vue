@@ -14,7 +14,7 @@
         <p class="description | leading-relaxed korean text-white xl:text-right">
           웹 개발을 하면서, 코드가 필요하지 않은 세상을 만들고 싶습니다.<br class="hidden sm:block"/>
           제작자도 쉽게 웹을 만들 수 있고, 사용자도 좋은 경험을 누릴수 있게<br class="hidden sm:block"/>
-          고민을 하면서 진행중인 작업물 “MM”을 소개합니다.
+          고민 하면서 진행중인 Mark up manager “MM”을 소개합니다.
         </p>
         <div class="flex flex-col md:flex-row gap-6">
           <a href="https://musical-speculoos-19071a.netlify.app/"

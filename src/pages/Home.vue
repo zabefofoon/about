@@ -90,4 +90,11 @@ watch(index,
         background.value = 'bg-black'
       }
     }, {immediate: true})
+
+window.addEventListener('keydown', ({code}: KeyboardEvent) => {
+  if (code === 'ArrowDown')
+    increaseIndex()
+  else if (code === 'ArrowUp')
+    decreaseIndex()
+})
 </script>

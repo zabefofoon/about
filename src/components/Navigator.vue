@@ -30,7 +30,7 @@ const emit = defineEmits<{
     left: 50%;
     top: unset;
     right: unset;
-    bottom: 24px;
+    bottom: 48px;
 
     transform: translate(-50%, 0);
 

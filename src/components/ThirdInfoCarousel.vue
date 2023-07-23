@@ -34,12 +34,12 @@
 
 <script setup lang="ts">
 import emblaCarouselVue from 'embla-carousel-vue'
-import {ref} from "vue"
+import {onBeforeUnmount, onMounted, ref} from "vue"
 import {SlideContent} from "@/models/SlideContent"
 import hknu from "@/assets/image/hknu.svg"
 import uzen from "@/assets/image/uzen.png"
 
-const [emblaNode] = emblaCarouselVue({
+const [emblaNode, emblaApi] = emblaCarouselVue({
   align: 'center',
   dragFree: true
 })
@@ -96,7 +96,7 @@ target="_blank">바이린 사용 예시</a>
   SlideContent.of({
     image: uzen,
     date: '23.06',
-    title: '<a class="korean | underline decoration-1" href="https://bylynn.shop" target="_blank">Bylynn</a> 구축',
+    title: '<a class="korean-bold | underline decoration-1" href="https://bylynn.shop" target="_blank">Bylynn</a> 구축',
     description: 'Vue3/Typescript/Scss/Spring Boot로 만들었으며, 제로그램과는 다르게 SPA 및 반응형 웹을 시도했습니다. 홈/검색/상품목록/상품상세/브랜드관/기획전/콘텐츠 등 여러 부분을 맡았습니다.',
     caption: `
 <a class="korean | mr-3 | underline decoration-1"
@@ -106,6 +106,16 @@ target="_blank">바이린</a>
   })
 ])
 
+const keydownHandler = ({code}: KeyboardEvent) => {
+  if (code === 'ArrowRight')
+    emblaApi.value?.scrollNext()
+  else if (code === 'ArrowLeft')
+    emblaApi.value?.scrollPrev()
+}
+
+onMounted(() => window.addEventListener('keydown', keydownHandler))
+
+onBeforeUnmount(() => window.removeEventListener('keydown', keydownHandler))
 </script>
 
 <style scoped lang="scss">
