@@ -149,8 +149,8 @@ const init = () => {
 }
 
 
-const animate = (scene,
-                 cube) => {
+const animate = (scene: THREE.Scene,
+                 cube: THREE.Mesh) => {
   cube.rotation.y += 0.001
 
   raycaster.value.setFromCamera(pointer.value, camera.value);
