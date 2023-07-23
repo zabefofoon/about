@@ -15,14 +15,8 @@
          style="background: linear-gradient(140deg, rgba(0,0,255,.2) 0%, rgba(255,0,0,.1) 100%)"></div>
     <Progress :index="index"
               @update:index="setIndex"/>
-    <button class="hidden xl:flex flex-col items-center justify-center | absolute xl:bottom-16 xl:left-1/2 xl:-translate-x-1/2 | text-white">
-      <span class="icon icon-up | text-3xl"
-            @click="decreaseIndex"></span>
-      <span class="icon icon-wheel | text-4xl"
-            @click="increaseIndex"></span>
-      <span class="icon icon-down | text-3xl"
-            @click="increaseIndex"></span>
-    </button>
+    <Navigator @increase="increaseIndex()"
+               @decrease="decreaseIndex()"/>
   </main>
 </template>
 <script setup lang="ts">
@@ -35,6 +29,7 @@ import Progress from "@/components/Progress.vue"
 
 import debounce from "lodash.debounce"
 import FourthInfo from "@/components/FourthInfo.vue"
+import Navigator from "@/components/Navigator.vue"
 
 defineProps<{
   updateKey: number

@@ -1,6 +1,6 @@
 <template>
   <div class="embla | w-full | relative">
-    <div class="embla__viewport | overflow-hidden | py-20 pl-12 md:pl-80"
+    <div class="embla__viewport | overflow-hidden | py-20 px-40 md:px-80"
          ref="emblaNode">
       <div class="embla__container | flex | -ml-20 md:-ml-8">
         <div v-for="(content, index) in contents"
@@ -57,7 +57,7 @@ const contents = ref<SlideContent[]>([
     date: '19.12 ~',
     title: 'eCommerce 전문 기업 Uzen 입사',
     description: `
-    ‘G1 Commerce Cloud’ 라는 솔루션 사업을 담당하는 PS사업부에서 프론트엔드 개발팀에 속하고 있습니다.<div class="h-12"></div>
+    ‘G1 Commerce Cloud’ 라는 솔루션 사업을 담당하는 PS사업부에서 프론트엔드 개발팀에 속하고 있습니다.<div class="h-12 md:h-4"></div>
     플랫폼 Api 와의 연계 및 프론트 화면 구축, 필요한 Ui 라이브러리 제작, 간단한 CMS인 ‘페이지빌더’ 제작 등에 기여하고 있습니다.
     `,
     caption: `
@@ -69,7 +69,7 @@ const contents = ref<SlideContent[]>([
   SlideContent.of({
     image: uzen,
     date: '21.04',
-    title: '<a class="korean | underline decoration-1" href="https://www.zerogram.co.kr" target="_blank">Zerogram</a> 구축',
+    title: '<a class="korean-bold | underline decoration-1" href="https://www.zerogram.co.kr" target="_blank">Zerogram</a> 구축',
     description: 'Vue2/Spring Boot로 만들었으며, 홈/검색/상품목록/상품상세/매장안내/기획전/콘텐츠 등 여러 부분을 맡았습니다.',
     caption: `
 <a class="korean | mr-3 | underline decoration-1"
@@ -111,10 +111,10 @@ target="_blank">바이린</a>
 <style scoped lang="scss">
 .embla {
   .embla__slide {
-    flex: 0 0 90%;
+    flex: 0 0 95%;
 
     @media (min-width: 768px) {
-      flex: 0 0 33.33%;
+      flex: 0 0 40%;
     }
 
     .date {

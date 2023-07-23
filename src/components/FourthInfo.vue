@@ -1,15 +1,13 @@
 <template>
   <section class="w-full h-full | flex flex-col justify-end | absolute top-0 left-0 | transition-all"
            :class="index === 3 ? 'pointer-events-auto' : 'pointer-events-none'">
-    <div class="flex flex-col | absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 | pb-40">
-      <h2 class="leading-none text-red-500 text-outline-2 transition-all duration-500"
-          :class="text1"
-          style="font-size: 26rem;  ">Contact</h2>
-      <p class="leading-none text-red-500 text-outline-1 text-center transition-all duration-500 delay-100"
-         :class="text2"
-         style="font-size: 6rem;">Let`s make it together</p>
-      <div class="w-fit | mt-20 mx-auto | text-3xl leading-relaxed korean text-white text-center transition-all duration-500 delay-200"
-           :class="text3">
+    <div class="flex flex-col | w-full | absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 | pb-40">
+      <h2 class="title | leading-none text-center text-red-500 text-outline-2 transition-all duration-500"
+          :class="dissolve">Contact</h2>
+      <p class="sub-title | leading-none text-red-500 text-outline-1 text-center transition-all duration-500 delay-100"
+         :class="dissolve">Let`s make it together</p>
+      <div class="description | w-fit | mt-20 mx-auto | leading-relaxed korean text-white text-center transition-all duration-500 delay-200"
+           :class="dissolve">
         <div class="flex gap-4">
           <p>Kakao: </p>
           <p>zabefofoon</p>
@@ -34,24 +32,35 @@ const props = defineProps<{
   index: number
 }>()
 
-const text1 = ref()
-const text2 = ref()
-const text3 = ref()
+const dissolve = ref()
 
 watch(() => props.index,
     (value) => {
-      if (value === 3) {
-        text1.value = 'opacity-100 translate-y-0'
-        text2.value = 'opacity-100 translate-y-0'
-        text3.value = 'opacity-100 translate-y-0'
-      } else {
-        text1.value = 'opacity-0 translate-y-10'
-        text2.value = 'opacity-0 translate-y-10'
-        text3.value = 'opacity-0 translate-y-10'
-      }
+      dissolve.value = value === 3
+          ? 'opacity-100 translate-y-0'
+          : 'opacity-0 translate-y-10'
     }, {immediate: true})
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.title {
+  font-size: max(80px, 26rem);
+  @media (min-width: 1280px) {
+    font-size: max(36px, 26rem);
+  }
+}
 
+.sub-title {
+  font-size: max(28px, 6rem);
+  @media (min-width: 1280px) {
+    font-size: max(28px, 6rem);
+  }
+}
+
+.description {
+  font-size: clamp(15px, 2rem, 24px);
+  @media (min-width: 1280px) {
+    font-size: max(18px, 1.8rem);
+  }
+}
 </style>

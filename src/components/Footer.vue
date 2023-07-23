@@ -1,7 +1,6 @@
 <template>
-  <footer class="py-4 px-4 | main-black text-gray-200 text-3xl">
-    <div style="font-size: 15px;"
-    class="whitespace-nowrap">
+  <footer class="main-black | text-gray-200">
+    <div class="footer | whitespace-nowrap">
       Web Front End, 1995.05, Man, Vue, Nuxt, Typescript, Scss, TailwindCss
     </div>
   </footer>
@@ -12,5 +11,12 @@
 </script>
 
 <style scoped lang="scss">
-
+.footer {
+  font-size: 16px;
+  padding: 8px 12px;
+  @media (min-width: 1280px) {
+    font-size: 20px;
+    padding: 12px 20px;
+  }
+}
 </style>
