@@ -1,9 +1,8 @@
 <template>
-  <section class="w-full h-full | flex flex-col justify-end | absolute top-0 left-0 | transition-all"
+  <section class="w-full h-full | flex flex-col justify-end | absolute top-0 left-0 | dissolve-transition"
            :class="index === 2 ? 'pointer-events-auto' : 'pointer-events-none'">
-    <h3 class="absolute bottom-16 | leading-none text-orange-500 text-outline-2 transition-all duration-500"
-        :class="text2"
-        style="font-size: 26rem;">Career</h3>
+    <h3 class="title | absolute bottom-16 | leading-none text-orange-500 text-outline-2 dissolve-transition duration-500"
+        :class="dissolve">Career</h3>
     <Transition>
       <div v-if="index === 2"
            class="absolute left-0 | w-full h-full">
@@ -23,22 +22,21 @@ const props = defineProps<{
   index: number
 }>()
 
-const text1 = ref()
-const text2 = ref()
+const dissolve = ref()
 
 watch(() => props.index,
     (value) => {
-      if (value === 2) {
-        text1.value = 'opacity-100 translate-y-0'
-        text2.value = 'opacity-50 translate-y-0'
-      } else {
-        text1.value = 'opacity-0 translate-y-10'
-        text2.value = 'opacity-0 translate-y-10'
-      }
+      dissolve.value = value === 2
+          ? 'opacity-50 translate-y-0'
+          : 'opacity-0 translate-y-20'
     }, {immediate: true})
 </script>
 
 <style scoped lang="scss">
+.dissolve-transition {
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
 .v-enter-active,
 .v-leave-active {
   transition: all 300ms ease;
@@ -48,5 +46,12 @@ watch(() => props.index,
 .v-leave-to {
   opacity: 0;
   transform: translateX(100%);
+}
+
+.title {
+  font-size: clamp(80px, 40rem, 200px);
+  @media (min-width: 1280px) {
+    font-size: 26rem;
+  }
 }
 </style>

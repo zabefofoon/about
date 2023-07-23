@@ -17,6 +17,8 @@
               @update:index="setIndex"/>
     <Navigator @increase="increaseIndex()"
                @decrease="decreaseIndex()"/>
+    <img class="deco | absolute | w-1/4 lg:w-60 | opacity-10 pointer-events-none"
+         src="@/assets/image/deco.png"/>
   </main>
 </template>
 <script setup lang="ts">
@@ -63,7 +65,7 @@ const pointerenterHandler = (event: TouchEvent) => {
   clientY = event.changedTouches[0].clientY
 }
 const pointerleaveHandler = (event: TouchEvent) => {
-  if (Math.abs(clientY - event.changedTouches[0].clientY) > 72)
+  if (Math.abs(clientY - event.changedTouches[0].clientY) > 80)
     clientY > event.changedTouches[0].clientY
         ? increaseIndex()
         : decreaseIndex()
@@ -98,3 +100,15 @@ window.addEventListener('keydown', ({code}: KeyboardEvent) => {
     decreaseIndex()
 })
 </script>
+
+<style scoped lang="scss">
+.deco {
+  left: 0;
+  transform: rotate(-90deg);
+  @media (min-width: 1280px) {
+    left: unset;
+    right: 0;
+    transform: rotate(0);
+  }
+}
+</style>

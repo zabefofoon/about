@@ -33,7 +33,7 @@ const items = ref([
 
 <style scoped lang="scss">
 .progress {
-  font-size: 14px;
+  font-size: 15px;
 
   top: 20px;
   left: 20px;

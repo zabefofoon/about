@@ -1,11 +1,11 @@
 <template>
   <div class="embla | w-full | relative">
-    <div class="embla__viewport | overflow-hidden | py-20 px-40 md:px-80"
+    <div class="embla__viewport | overflow-hidden | py-20 px-40 lg:px-80"
          ref="emblaNode">
-      <div class="embla__container | flex | -ml-20 md:-ml-8">
+      <div class="embla__container | flex | -ml-20 lg:-ml-8">
         <div v-for="(content, index) in contents"
              :key="index + content.title"
-             class="embla__slide | h-full min-w-0 | pl-20 md:pl-8">
+             class="embla__slide | h-full min-w-0 | pl-20 lg:pl-8">
           <div class="flex flex-col items-center justify-center gap-8 | w-full aspect-square | relative | p-32 | shadow-md shadow-orange-800 bg-white">
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 | w-full h-full | opacity-10 pointer-events-none"
                  style="max-width: 50%;max-height: 50%;">
@@ -57,7 +57,7 @@ const contents = ref<SlideContent[]>([
     date: '19.12 ~',
     title: 'eCommerce 전문 기업 Uzen 입사',
     description: `
-    ‘G1 Commerce Cloud’ 라는 솔루션 사업을 담당하는 PS사업부에서 프론트엔드 개발팀에 속하고 있습니다.<div class="h-12 md:h-4"></div>
+    ‘G1 Commerce Cloud’ 라는 솔루션 사업을 담당하는 PS사업부에서 프론트엔드 개발팀에 속하고 있습니다.<div class="h-12 lg:h-4"></div>
     플랫폼 Api 와의 연계 및 프론트 화면 구축, 필요한 Ui 라이브러리 제작, 간단한 CMS인 ‘페이지빌더’ 제작 등에 기여하고 있습니다.
     `,
     caption: `
@@ -84,10 +84,11 @@ target="_blank">제로그램</a>
     description: 'Vue3/Typescript/Scss로 만들었으며, 고객사가 자유롭게 페이지를 구성하고 싶을 때를 대비해서 제작한 CMS 입니다.',
     caption: `
 <a class="korean | mr-3 | underline decoration-1"
-target="_blank">예시 동영상</a>
+href="https://www.youtube.com/watch?v=q4FDsWlW_DE"
+target="_blank">AWS Summit Seoul 2023 시연 자료</a><br/>
 <a class="korean | mr-3 | underline decoration-1"
 href="https://zerogram.co.kr/exhibitions/305"
-target="_blank">제로그램 사용 예시</a>
+target="_blank">제로그램 사용 예시</a><br/>
 <a class="korean | mr-3 | underline decoration-1"
 href="https://bylynn.shop/exhibitions/69"
 target="_blank">바이린 사용 예시</a>
@@ -121,41 +122,40 @@ onBeforeUnmount(() => window.removeEventListener('keydown', keydownHandler))
 <style scoped lang="scss">
 .embla {
   .embla__slide {
-    flex: 0 0 95%;
-
-    @media (min-width: 768px) {
+    flex: 0 0 min(400px, 95%);
+    @media (min-width: 1280px) {
       flex: 0 0 40%;
     }
 
     .date {
-      font-size: max(12px, 3rem);
+      font-size: 12px;
 
-      @media (min-width: 768px) {
+      @media (min-width: 1280px) {
         font-size: max(12px, 1.6rem);
       }
     }
 
     .title {
-      font-size: max(15px, 4rem);
+      font-size: 15px;
 
-      @media (min-width: 768px) {
+      @media (min-width: 1280px) {
         font-size: max(15px, 1.6rem);
       }
     }
 
     .description {
-      font-size: max(15px, 4rem);
+      font-size: 14px;
 
-      @media (min-width: 768px) {
+      @media (min-width: 1280px) {
         font-size: max(15px, 1.6rem);
       }
     }
 
     .caption {
-      font-size: max(12px, 3rem);
+      font-size: 12px;
 
-      @media (min-width: 768px) {
-        font-size: max(12px, 1.6rem);
+      @media (min-width: 1280px) {
+        font-size: clamp(12px, 1.6rem, 14px);
       }
     }
   }
