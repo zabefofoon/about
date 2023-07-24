@@ -59,7 +59,7 @@ const decreaseIndex = debounce(() => {
 
 const canvasXPos = ref('xl:left-1/4')
 const setCanvasXPos = (value: string) => canvasXPos.value = value
-const canvasXPosMap = {
+const canvasXPosMap: {[key in number]: string} = {
   0: 'xl:left-1/4',
   1: 'xl:-left-1/4',
   2: 'xl:left-1/2 xl:-translate-x-1/2',
@@ -68,7 +68,7 @@ const canvasXPosMap = {
 }
 const background = ref('bg-purple-900')
 const setBackground = (value: string) => background.value = value
-const backgroundMap = {
+const backgroundMap: {[key in number]: string} = {
   0: 'bg-purple-900',
   1: 'bg-blue-800',
   2: 'bg-orange-500',
@@ -90,7 +90,7 @@ watch(index,
     }, {immediate: true})
 
 
-const keyMap = {
+const keyMap: {[key in string]: () => void} = {
   ArrowDown: increaseIndex,
   ArrowUp: decreaseIndex
 }

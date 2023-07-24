@@ -29,7 +29,7 @@ const items = ref([
 ])
 
 
-const textMap = {
+const textMap: {[key in number]: string} = {
   0: 'text-purple-500',
   1: 'text-blue-500',
   2: 'text-orange-500',
