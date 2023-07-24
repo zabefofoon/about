@@ -38,3 +38,21 @@
   -webkit-mask-image: url($src);
   mask-image: url($src);
 }
+
+.icon-github {
+  $src: 'https://api.iconify.design/mdi/github.svg';
+  -webkit-mask-image: url($src);
+  mask-image: url($src);
+}
+
+.icon-bar {
+  $src: 'https://api.iconify.design/fe/bar.svg';
+  -webkit-mask-image: url($src);
+  mask-image: url($src);
+}
+
+.icon-close {
+  $src: 'https://api.iconify.design/material-symbols/close.svg';
+  -webkit-mask-image: url($src);
+  mask-image: url($src);
+}

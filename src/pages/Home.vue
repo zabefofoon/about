@@ -32,15 +32,21 @@ import Progress from "@/components/Progress.vue"
 import debounce from "lodash.debounce"
 import FourthInfo from "@/components/FourthInfo.vue"
 import Navigator from "@/components/Navigator.vue"
+import {useRoute, useRouter} from "vue-router"
 
-defineProps<{
-  updateKey: number
-}>()
+const router = useRouter()
+const route = useRoute()
 
 const el = ref<HTMLDivElement>()
-const index = ref(0)
-const setIndex = (value: number) => index.value = value
+
 const MAX_INDEX = 4
+const getDefaultIndex = () => {
+  const result = route.query.section ? Number(route.query.section) : 0
+  return isNaN(result) ? 0 : result
+}
+const index = ref<number>(getDefaultIndex())
+const setIndex = (value: number) => index.value = value
+
 const increaseIndex = debounce(() => {
   index.value++
   if (index.value > MAX_INDEX) index.value = 0
@@ -51,6 +57,45 @@ const decreaseIndex = debounce(() => {
   if (index.value < 0) index.value = MAX_INDEX
 }, 250, {leading: true, trailing: false})
 
+const canvasXPos = ref('xl:left-1/4')
+const setCanvasXPos = (value: string) => canvasXPos.value = value
+const canvasXPosMap = {
+  0: 'xl:left-1/4',
+  1: 'xl:-left-1/4',
+  2: 'xl:left-1/2 xl:-translate-x-1/2',
+  3: 'xl:left-1/2 xl:-translate-x-1/2',
+  4: 'xl:left-1/2 xl:-translate-x-1/2'
+}
+const background = ref('bg-purple-900')
+const setBackground = (value: string) => background.value = value
+const backgroundMap = {
+  0: 'bg-purple-900',
+  1: 'bg-blue-800',
+  2: 'bg-orange-500',
+  3: 'bg-red-500',
+  4: 'bg-black'
+}
+
+const replacePageQueryByIndex = (index: number) => {
+  index === 0
+      ? router.replace({query: undefined})
+      : router.replace({query: {section: index}})
+}
+
+watch(index,
+    (index) => {
+      setCanvasXPos(canvasXPosMap[index])
+      setBackground(backgroundMap[index])
+      replacePageQueryByIndex(index)
+    }, {immediate: true})
+
+
+const keyMap = {
+  ArrowDown: increaseIndex,
+  ArrowUp: decreaseIndex
+}
+window.addEventListener('keydown', ({code}: KeyboardEvent) => keyMap[code]())
+
 
 const wheelHandler = (event: WheelEvent) => {
   event.deltaY > 0
@@ -60,10 +105,7 @@ const wheelHandler = (event: WheelEvent) => {
 
 
 let clientY = 0
-
-const pointerenterHandler = (event: TouchEvent) => {
-  clientY = event.changedTouches[0].clientY
-}
+const pointerenterHandler = (event: TouchEvent) => clientY = event.changedTouches[0].clientY
 const pointerleaveHandler = (event: TouchEvent) => {
   if (Math.abs(clientY - event.changedTouches[0].clientY) > 80)
     clientY > event.changedTouches[0].clientY
@@ -71,34 +113,12 @@ const pointerleaveHandler = (event: TouchEvent) => {
         : decreaseIndex()
 }
 
-const canvasXPos = ref('xl:left-1/4')
-const background = ref('bg-purple-900')
-watch(index,
-    (value) => {
-      if (value === 0) {
-        canvasXPos.value = 'xl:left-1/4'
-        background.value = 'bg-purple-900'
-      } else if (value === 1) {
-        canvasXPos.value = 'xl:-left-1/4'
-        background.value = 'bg-blue-800'
-      } else if (value === 2) {
-        canvasXPos.value = 'xl:left-1/2 xl:-translate-x-1/2'
-        background.value = 'bg-orange-500'
-      } else if (value === 3) {
-        canvasXPos.value = 'xl:left-1/2 xl:-translate-x-1/2'
-        background.value = 'bg-red-500'
-      } else {
-        canvasXPos.value = 'xl:left-1/2 xl:-translate-x-1/2'
-        background.value = 'bg-black'
-      }
-    }, {immediate: true})
-
-window.addEventListener('keydown', ({code}: KeyboardEvent) => {
-  if (code === 'ArrowDown')
-    increaseIndex()
-  else if (code === 'ArrowUp')
-    decreaseIndex()
-})
+watch(() => route.query.section,
+    () => {
+      const result = route.query.section ? Number(route.query.section) : 0
+      const index = isNaN(result) ? 0 : result
+      setIndex(index)
+    })
 </script>
 
 <style scoped lang="scss">

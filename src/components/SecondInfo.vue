@@ -89,7 +89,7 @@ section {
     font-size: clamp(15px, 3rem, 18px);
 
     @media (min-width: 1280px) {
-      font-size: 1.8rem;
+      font-size: clamp(15px, 1.8rem, 24px);
     }
   }
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="embla | w-full | relative">
+  <div class="embla | w-full | relative | cursor-grab active:cursor-grabbing">
     <div class="embla__viewport | overflow-hidden | py-20 px-40 lg:px-80"
          ref="emblaNode">
       <div class="embla__container | flex | -ml-20 lg:-ml-8">
@@ -139,7 +139,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', keydownHandler))
       font-size: 15px;
 
       @media (min-width: 1280px) {
-        font-size: max(15px, 1.6rem);
+        font-size: clamp(15px, 1.6rem, 20px);
       }
     }
 
@@ -147,7 +147,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', keydownHandler))
       font-size: 14px;
 
       @media (min-width: 1280px) {
-        font-size: max(15px, 1.6rem);
+        font-size: clamp(15px, 1.6rem, 20px);
       }
     }
 
@@ -160,5 +160,4 @@ onBeforeUnmount(() => window.removeEventListener('keydown', keydownHandler))
     }
   }
 }
-
 </style>

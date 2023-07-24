@@ -1,12 +1,12 @@
 <template>
-  <section class="w-full h-full | flex flex-col justify-end | absolute top-0 left-0 | transition-all"
+  <section class="dissolve-transition | w-full h-full | flex flex-col justify-end | absolute top-0 left-0"
            :class="index === 3 ? 'pointer-events-auto' : 'pointer-events-none'">
     <div class="flex flex-col | w-full | absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 | pb-40">
-      <h2 class="title | leading-none text-center text-red-500 text-outline-2 transition-all duration-500"
+      <h2 class="dissolve-transition title | leading-none text-center text-red-500 text-outline-2 duration-500"
           :class="dissolve">Contact</h2>
-      <p class="sub-title | leading-none text-red-500 text-outline-1 text-center transition-all duration-500 delay-100"
+      <p class="dissolve-transition sub-title | leading-none text-red-500 text-outline-1 text-center duration-500 delay-100"
          :class="dissolve">Let`s make it together</p>
-      <div class="description | w-fit | mt-20 mx-auto | leading-relaxed korean text-white text-center transition-all duration-500 delay-200"
+      <div class="dissolve-transition description | w-fit | mt-20 mx-auto | leading-relaxed korean text-white text-center duration-500 delay-200"
            :class="dissolve">
         <div class="flex gap-4">
           <p>Kakao: </p>
@@ -19,6 +19,13 @@
         <div class="flex gap-4">
           <p>Insta: </p>
           <p>sangwwoo</p>
+        </div>
+        <div class="flex justify-center gap-4">
+          <a href="https://github.com/zabefofoon/about"
+             target="_blank"
+             class="w-full | mt-12 border rounded-full cursor-pointer hover:bg-white hover:text-red-500">
+            About more
+          </a>
         </div>
       </div>
     </div>
@@ -43,6 +50,12 @@ watch(() => props.index,
 </script>
 
 <style scoped lang="scss">
+.dissolve-transition {
+  transition-property: opacity, transform;
+  transition-duration: 500ms;
+  transition-timing-function: ease;
+}
+
 .title {
   font-size: max(80px, 26rem);
   @media (min-width: 1280px) {

@@ -50,7 +50,7 @@ onMounted(() => {
 const init = () => {
   renderer.value = new THREE.WebGLRenderer({antialias: true, alpha: true})
   renderer.value.setClearColor(0x000000, 0)
-  renderer.value.shadowMap.enabled = true;
+  renderer.value.shadowMap.enabled = true
   renderer.value.setPixelRatio(window.devicePixelRatio)
   renderer.value.setSize(width.value, height.value)
   renderArea.value?.appendChild(renderer.value.domElement)
@@ -61,10 +61,10 @@ const init = () => {
   setCameraPosition()
   scene.add(camera.value)
 
-  const light = new THREE.PointLight(0xffffff, 5, 200);
-  light.position.set(50, 50, 50);
+  const light = new THREE.PointLight(0xffffff, 5, 200)
+  light.position.set(50, 50, 50)
   light.castShadow = true
-  scene.add(light);
+  scene.add(light)
 
   const boxGeometry = new THREE.SphereGeometry(25, 30, 16)
   const basicMaterial = new THREE.MeshStandardMaterial({
@@ -72,11 +72,11 @@ const init = () => {
     emissive: 0x222222,
     wireframe: true
   })
-  const cube = new THREE.Mesh(boxGeometry, basicMaterial);
+  const cube = new THREE.Mesh(boxGeometry, basicMaterial)
   cube.castShadow = true
   cube.rotation.set(Math.PI * .3, 0, 0)
 
-  scene.add(cube);
+  scene.add(cube)
 
   const group = new THREE.Group()
   group.add(cube)
@@ -102,14 +102,14 @@ const init = () => {
   }
 
   const onPointerMove = (event: PointerEvent) => {
-    pointer.value.x = (event.layerX / (renderArea.value?.offsetWidth || 0)) * 2 - 1;
-    pointer.value.y = (event.layerY / (renderArea.value?.offsetHeight || 0)) * 2 + 1;
+    pointer.value.x = (event.layerX / (renderArea.value?.offsetWidth || 0)) * 2 - 1
+    pointer.value.y = (event.layerY / (renderArea.value?.offsetHeight || 0)) * 2 + 1
 
     group.rotation.set(pointer.value.y / 10, pointer.value.x / 10, -Math.PI * .25)
   }
 
-  window.addEventListener('resize', onWindowResize, {passive: true})
-  renderArea.value?.addEventListener('pointermove', onPointerMove);
+  window.addEventListener('resize', onWindowResize, {passive: true});
+  (<HTMLDivElement>renderArea.value)?.addEventListener('pointermove', onPointerMove)
 
   watch(() => props.index,
       (value) => {
@@ -140,7 +140,7 @@ const init = () => {
           gsap.to(cube.rotation, {duration: .5, delay: 0, x: Math.PI * .3})
           gsap.to(group.rotation, {duration: .5, delay: 0, z: -Math.PI * .25})
         }
-      })
+      }, {immediate: true})
 
   onBeforeUnmount(() => {
     window.removeEventListener('resize', onWindowResize)
@@ -151,9 +151,10 @@ const init = () => {
 
 const animate = (scene: THREE.Scene,
                  cube: THREE.Mesh) => {
-  cube.rotation.y += 0.001
+  if (cube.scale.z !== 0)
+    cube.rotation.y += 0.001
 
-  raycaster.value.setFromCamera(pointer.value, camera.value);
+  raycaster.value.setFromCamera(pointer.value, camera.value)
   renderer.value.render(scene, camera.value)
 
   animationID = requestAnimationFrame(() => animate(scene, cube))
