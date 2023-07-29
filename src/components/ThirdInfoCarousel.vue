@@ -36,7 +36,6 @@
 import emblaCarouselVue from 'embla-carousel-vue'
 import {onBeforeUnmount, onMounted, ref} from "vue"
 import {SlideContent} from "@/models/SlideContent"
-import hknu from "@/assets/image/hknu.svg"
 import uzen from "@/assets/image/uzen.png"
 
 const [emblaNode, emblaApi] = emblaCarouselVue({
@@ -46,20 +45,10 @@ const [emblaNode, emblaApi] = emblaCarouselVue({
 
 const contents = ref<SlideContent[]>([
   SlideContent.of({
-    image: hknu,
-    date: '14.03 ~ 20.02',
-    title: '한경대학교 시각디자인학과',
-    description: '',
-    caption: ''
-  }),
-  SlideContent.of({
     image: uzen,
     date: '19.12 ~',
     title: 'eCommerce 전문 기업 Uzen 입사',
-    description: `
-    ‘G1 Commerce Cloud’ 라는 솔루션 사업을 담당하는 PS사업부에서 프론트엔드 개발팀에 속하고 있습니다.<div class="h-12 lg:h-4"></div>
-    플랫폼 Api 와의 연계 및 프론트 화면 구축, 필요한 Ui 라이브러리 제작, 간단한 CMS인 ‘페이지빌더’ 제작 등에 기여하고 있습니다.
-    `,
+    description: `‘G1 Commerce Cloud’ 라는 솔루션 사업을 담당하는 PS사업부에서 프론트엔드 개발팀에 속하고 있습니다.`,
     caption: `
     <a class="korean | mr-3 | underline decoration-1"
     href="https://www.jobkorea.co.kr/Starter/interview/View/22359?Page=3&IsFavorOn=0"
@@ -97,7 +86,7 @@ target="_blank">바이린 사용 예시</a>
   SlideContent.of({
     image: uzen,
     date: '23.06',
-    title: '<a class="korean-bold | underline decoration-1" href="https://bylynn.shop" target="_blank">Bylynn</a> 구축',
+    title: '<a class="korean-bold | underline decoration-1" href="https://bylynn.shop" target="_blank">Bylynn</a> 구축 및 운영',
     description: 'Vue3/Typescript/Scss/Spring Boot로 만들었으며, 제로그램과는 다르게 SPA 및 반응형 웹을 시도했습니다. 홈/검색/상품목록/상품상세/브랜드관/기획전/콘텐츠 등 여러 부분을 맡았습니다.',
     caption: `
 <a class="korean | mr-3 | underline decoration-1"
