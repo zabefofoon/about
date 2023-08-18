@@ -17,7 +17,7 @@
           고민 하면서 진행중인 Mark up manager “MM”을 소개합니다.
         </p>
         <div class="flex flex-col md:flex-row gap-6">
-          <a href="https://musical-speculoos-19071a.netlify.app/"
+          <a href="https://youtu.be/_aow912gTf0"
              target="_blank"
              class="block w-full">
             <button class="flex items-center justify-center gap-4 | w-full | border text-white rounded-full shadow-lg hover:shadow-sm hover:bg-white hover:text-blue-800 transition-all">
