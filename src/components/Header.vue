@@ -1,6 +1,8 @@
 <template>
   <header class="main-black | flex items-center | text-gray-200">
-    <div class="content">Jung Sang Woo</div>
+    <div class="content">
+      <router-link to="/">Jung Sang Woo</router-link>
+    </div>
     <a class="hidden lg:flex items-center | ml-auto"
        href="https://github.com/zabefofoon/about"
        target="_blank">
