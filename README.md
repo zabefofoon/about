@@ -79,4 +79,5 @@ Vue와 Typescript, Scss를 주로 사용하고 있습니다. 최신 웹 기술�
 
 ### 링크
 
-*    https://zabefofoon.github.io/about/#/
+*   https://zabefofoon.github.io/about/#/
+*   https://www.notion.so/771a166d66334894984a5cb2218ebeb7
