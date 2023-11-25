@@ -37,6 +37,7 @@ import emblaCarouselVue from 'embla-carousel-vue'
 import {onBeforeUnmount, onMounted, ref} from "vue"
 import {SlideContent} from "@/models/SlideContent"
 import uzen from "@/assets/image/uzen.png"
+import incross from "@/assets/image/incross.png"
 
 const [emblaNode, emblaApi] = emblaCarouselVue({
   align: 'center',
@@ -46,7 +47,7 @@ const [emblaNode, emblaApi] = emblaCarouselVue({
 const contents = ref<SlideContent[]>([
   SlideContent.of({
     image: uzen,
-    date: '19.12 ~',
+    date: '19.12 ~ 23.11',
     title: 'eCommerce 전문 기업 Uzen 입사',
     description: `‘G1 Commerce Cloud’ 라는 솔루션 사업을 담당하는 PS사업부에서 프론트엔드 개발팀에 속하고 있습니다.`,
     caption: `
@@ -93,6 +94,13 @@ target="_blank">바이린 사용 예시</a>
 href="https://bylynn.shop"
 target="_blank">바이린</a>
     `
+  }),
+  SlideContent.of({
+    image: incross,
+    date: '23.11',
+    title: '미디어 렙사 Incross 입사',
+    description: `기술연구소 서비스개발팀에서 프론트엔드로 일하였으며, 'SKT T deal'과 광고 플랫폼 운영에 기여를 하였습니다.`,
+    caption: ``
   })
 ])
 
