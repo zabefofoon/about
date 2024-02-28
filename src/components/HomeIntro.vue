@@ -133,6 +133,10 @@ const init = () => {
           gsap.to(cube.scale, {duration: .5, delay: 0, x: 0})
           gsap.to(cube.scale, {duration: .5, delay: 0, y: 0})
           gsap.to(cube.scale, {duration: .5, delay: 0, z: 0})
+        } else if (value === 4) {
+          gsap.to(cube.scale, {duration: .5, delay: 0, x: 0})
+          gsap.to(cube.scale, {duration: .5, delay: 0, y: 0})
+          gsap.to(cube.scale, {duration: .5, delay: 0, z: 0})
         } else {
           gsap.to(cube.scale, {duration: .5, delay: 0, x: 1})
           gsap.to(cube.scale, {duration: .5, delay: 0, y: 1})

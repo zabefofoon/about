@@ -27,6 +27,7 @@ const items = ref([
   'Overview',
   'Interest',
   'Career',
+  'Personal',
   'Contact',
 ])
 </script>

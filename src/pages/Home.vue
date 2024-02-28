@@ -11,6 +11,7 @@
     <SecondInfo :index="index"/>
     <ThirdInfo :index="index"/>
     <FourthInfo :index="index"/>
+    <FifthInfo :index="index"/>
     <div class="absolute top-0 left-0 z-index-1 | w-full h-full | pointer-events-none"
          style="background: linear-gradient(140deg, rgba(0,0,255,.2) 0%, rgba(255,0,0,.1) 100%)"></div>
     <Progress :index="index"
@@ -27,10 +28,11 @@ import HomeIntro from "@/components/HomeIntro.vue"
 import FirstInfo from "@/components/FirstInfo.vue"
 import SecondInfo from "@/components/SecondInfo.vue"
 import ThirdInfo from "@/components/ThirdInfo.vue"
+import FourthInfo from "@/components/FourthInfo.vue"
+import FifthInfo from "@/components/FifthInfo.vue"
 import Progress from "@/components/Progress.vue"
 
 import debounce from "lodash.debounce"
-import FourthInfo from "@/components/FourthInfo.vue"
 import Navigator from "@/components/Navigator.vue"
 import {useRoute, useRouter} from "vue-router"
 
@@ -39,7 +41,7 @@ const route = useRoute()
 
 const el = ref<HTMLDivElement>()
 
-const MAX_INDEX = 4
+const MAX_INDEX = 5
 const getDefaultIndex = () => {
   const result = route.query.section ? Number(route.query.section) : 0
   return isNaN(result) ? 0 : result
@@ -64,7 +66,8 @@ const canvasXPosMap: {[key in number]: string} = {
   1: 'xl:-left-1/4',
   2: 'xl:left-1/2 xl:-translate-x-1/2',
   3: 'xl:left-1/2 xl:-translate-x-1/2',
-  4: 'xl:left-1/2 xl:-translate-x-1/2'
+  4: 'xl:left-1/2 xl:-translate-x-1/2',
+  5: 'xl:left-1/2 xl:-translate-x-1/2',
 }
 const background = ref('bg-purple-900')
 const setBackground = (value: string) => background.value = value
@@ -72,8 +75,9 @@ const backgroundMap: {[key in number]: string} = {
   0: 'bg-purple-900',
   1: 'bg-blue-800',
   2: 'bg-orange-500',
-  3: 'bg-red-500',
-  4: 'bg-black'
+  3: 'bg-green-500',
+  4: 'bg-red-500',
+  5: 'bg-black',
 }
 
 const replacePageQueryByIndex = (index: number) => {

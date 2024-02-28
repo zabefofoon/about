@@ -24,6 +24,7 @@ const isActiveNav = computed(() => route.query.nav === 'true')
 const items = ref([
   'Overview',
   'Interest',
+  'Personal',
   'Career',
   'Contact',
 ])
