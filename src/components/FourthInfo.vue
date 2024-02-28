@@ -17,7 +17,7 @@
         <li class="flex-shrink-0">
           <a href="https://zabefofoon.github.io/mm-guide/" target="_blank">
             <figure class="flex flex-col gap-[8px]">
-              <img class="w-full rounded-[12px]" src="../assets/image/mm.png" />
+              <img class="w-full rounded-[12px]" src="@/assets/image/mm.png" />
               <figcaption class="text-[16px] leading-none text-white text-center">
                 Markup Manager
               </figcaption>
@@ -27,7 +27,7 @@
         <li class="flex-shrink-0">
           <a href="https://zabefofoon.github.io/memoku-guide" target="_blank">
             <figure class="flex flex-col gap-[8px]">
-              <img class="w-full rounded-[12px]" src="../assets/image/memoku.png" />
+              <img class="w-full rounded-[12px]" src="@/assets/image/memoku.png" />
               <figcaption class="leading-none text-[16px] text-white text-center">
                 Memoku
               </figcaption>
@@ -37,7 +37,7 @@
         <li class="flex-shrink-0">
           <a href="https://econostatsus.netlify.app/" target="_blank">
             <figure class="flex flex-col gap-[8px]">
-              <img class="w-full rounded-[12px]" src="../assets/image/EconoStatsUs.png" />
+              <img class="w-full rounded-[12px]" src="@/assets/image/econoStatsUs.png" />
               <figcaption class="leading-none text-[16px] text-white text-center">
                 Econo Stats US
               </figcaption>
