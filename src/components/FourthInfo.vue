@@ -11,14 +11,14 @@
         Personal
       </h2>
       <ul
-        class="dissolve-transition mx-auto | grid grid-cols-3 justify-center gap-x-[12px] lg:gap-x-[20px] gap-y-[24px] | absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 | duration-500 delay-100"
+        class="dissolve-transition | min-w-[240px]  w-[60%] max-w-[400px] | mx-auto | grid grid-cols-3 justify-center gap-x-[12px] lg:gap-x-[20px] gap-y-[24px] | absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 | duration-500 delay-100"
         :class="dissolveApps"
       >
         <li class="flex-shrink-0">
           <a href="https://zabefofoon.github.io/mm-guide/" target="_blank">
             <figure class="flex flex-col gap-[8px]">
               <img class="w-full rounded-[12px]" src="@/assets/image/mm.png" />
-              <figcaption class="text-[16px] leading-none text-white text-center">
+              <figcaption class="text-[14px] lg:text-[16px] leading-none text-white text-center">
                 Markup Manager
               </figcaption>
             </figure>
@@ -28,7 +28,7 @@
           <a href="https://zabefofoon.github.io/memoku-guide" target="_blank">
             <figure class="flex flex-col gap-[8px]">
               <img class="w-full rounded-[12px]" src="@/assets/image/memoku.png" />
-              <figcaption class="leading-none text-[16px] text-white text-center">
+              <figcaption class="leading-none text-[14px] lg:text-[16px] text-white text-center">
                 Memoku
               </figcaption>
             </figure>
@@ -38,8 +38,18 @@
           <a href="https://econostatsus.netlify.app/" target="_blank">
             <figure class="flex flex-col gap-[8px]">
               <img class="w-full rounded-[12px]" src="@/assets/image/econoStatsUs.png" />
-              <figcaption class="leading-none text-[16px] text-white text-center">
+              <figcaption class="leading-none text-[14px] lg:text-[16px] text-white text-center">
                 Econo Stats US
+              </figcaption>
+            </figure>
+          </a>
+        </li>
+        <li class="flex-shrink-0">
+          <a href="https://randommy.netlify.app/" target="_blank">
+            <figure class="flex flex-col gap-[8px]">
+              <img class="w-full rounded-[12px] | bg-[#1f2937]" src="@/assets/image/randommy.svg" />
+              <figcaption class="leading-none text-[14px] lg:text-[16px] text-white text-center">
+                RANDOMMY
               </figcaption>
             </figure>
           </a>
