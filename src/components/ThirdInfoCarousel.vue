@@ -38,6 +38,7 @@ import {onBeforeUnmount, onMounted, ref} from "vue"
 import {SlideContent} from "@/models/SlideContent"
 import uzen from "@/assets/image/uzen.png"
 import incross from "@/assets/image/incross.png"
+import aiCompony from "@/assets/image/ai_compony.svg"
 
 const [emblaNode, emblaApi] = emblaCarouselVue({
   align: 'center',
@@ -100,7 +101,22 @@ target="_blank">바이린</a>
     date: '23.11',
     title: '미디어 렙사 Incross 입사',
     description: `기술연구소 서비스개발팀에서 프론트엔드로 일하였으며, 'SKT T deal'과 광고 플랫폼 운영에 기여를 하였습니다.`,
-    caption: ``
+    caption: `
+<a class="korean | mr-3 | underline decoration-1"
+href="https://tdeal.kr"
+target="_blank">T deal</a>
+    `
+  }),
+  SlideContent.of({
+    image: aiCompony,
+    date: '24.08',
+    title: '스타트업 에이아이컴퍼니 입사',
+    description: `프론트엔드로써, 짤스튜디오 운영 및 MCN전용 리포트 사이트 등의 프로젝트에 참여 했습니다.`,
+    caption: `
+<a class="korean | mr-3 | underline decoration-1"
+href="https://zzal.studio/"
+target="_blank">짤 스튜디오</a>
+    `
   })
 ])
 
