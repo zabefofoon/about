@@ -25,7 +25,7 @@
           </a>
         </li>
         <li class="flex-shrink-0">
-          <a href="https://zabefofoon.github.io/memoku-guide" target="_blank">
+          <a href="https://memoku.dev" target="_blank">
             <figure class="flex flex-col gap-[8px]">
               <img class="w-full rounded-[12px]" src="@/assets/image/memoku.png" />
               <figcaption class="leading-none text-[14px] lg:text-[16px] text-white text-center">
